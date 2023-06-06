@@ -1,0 +1,19 @@
+:root {  
+  
+    /* colors */
+    
+    --primery-background-img: linear-gradient(
+      to bottom,
+      #471CA9 100%,
+      #5736A3 100%,
+      #4B2A99 100%
+    ); 
+
+    --primery-text-color: #EBD8FF;
+    --secondary-text-color: #373737;
+    --active-button: #5CD3A8;
+    --active:  rgb(44, 95, 233);
+
+
+
+  }
