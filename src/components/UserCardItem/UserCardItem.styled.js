@@ -1,13 +1,16 @@
 import styled from "styled-components";
+import picture from '../../images/picture@1.png';
+import elips from '../../images/Ellipse1.png'
+import rectangle from '../../images/Rectangle.png'
 
 export const Card = styled.li`
   position: relative;
-  background-image: url(../../images/picture@1.png),
-    url(../../images/Ellipse1.png), url(../../images/Rectangle.png),
+  background-image: url(${picture}),
+    url(${elips}), url(${rectangle}),
     var(--primery-background-img);
   background-position: top 26px left 36px, top 178px left 150px,
     top 214px left 0px, center;
-  // background-size: 308px 168px, 80px 80px, 380px 8px ;
+  /* background-size: 308px 168px, 80px 80px, 380px 8px, cover ; */
   background-repeat: no-repeat;
 
   width: 380px;
@@ -53,7 +56,7 @@ export const Button =styled.button`
   line-height: 21.94px;
 
   color: var(--secondary-text-color);
-  background-color: ${({isFollowing}) => (isFollowing ?  '#5CD3A8' : '#EBD8FF')} ;
+  background-color: ${({isFollowing})=> (isFollowing ?  '#5CD3A8' : '#EBD8FF')} ;
   box-shadow: 0px 3.43693px 3.43693px rgba(0, 0, 0, 0.25);
   border-radius: 10.3108px;
 
@@ -77,13 +80,4 @@ export const Description =styled.ul`
   place-items: center;
 `
 
-// .mrBtn16 {
-//   margin-bottom: 16px;
-// }
-// .mrBtn26 {
-//   margin-bottom: 26px;
-// }
 
-// .mrTop16 {
-//   margin-top: 16px;
-// }

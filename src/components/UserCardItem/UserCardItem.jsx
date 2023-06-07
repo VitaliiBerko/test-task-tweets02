@@ -9,57 +9,53 @@ import {
 } from "./UserCardItem.styled.js";
 import logo from "../../images/Logo.svg";
 import avatarImg from "../../images/Hansel.png";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  setFollowersCountAction,
-  setToggleFollowingAction,
-} from "../../redux/usersSlice";
-import { selectFollowingStatud } from "../../redux/usersSelector";
 
-const UserCardItem = ({ user }) => {
-  const dispatch = useDispatch();
-  const { avatar, tweets, followers, id } = user;
+import { useState } from "react";
 
-  const followingStatus = useSelector(selectFollowingStatud);
+const UserCardItem = ({ user, toggleUserIsFollowing }) => {
+  
+  const { avatar, tweets, isFollowing, id } = user;
 
-  const isFollowing = followingStatus[id] ?? false;
+  const [followers, setFollowers] =useState(isFollowing? parseInt(user.followers)+1 : parseInt(user.followers)) 
 
-  const followersCount = useSelector(
-    (state) => state.users.followersCount[id] ?? followers
-  );
+  // const followingStatus = useSelector(selectFollowingStatud);
 
-  const handleOnFollow = () => {
-    const updatedFollowersCoutn = isFollowing
-      ? followersCount - 1
-      : followersCount + 1;
+  // const isFollowing = followingStatus[id] ?? false;
 
-    dispatch(
-      setFollowersCountAction({
-        userId: id,
-        followersCount: updatedFollowersCoutn,
-      })
-    );
+  // const followersCount = useSelector(
+  //   (state) => state.users.followersCount[id] ?? followers
+  // );
 
-    dispatch(
-      setToggleFollowingAction({ userId: id, isFollowing: !isFollowing })
-    );
-  };
+  // const handleOnFollow = () => {
+  //   const updatedFollowersCoutn = isFollowing
+  //     ? followersCount - 1
+  //     : followersCount + 1;
+
+  //   dispatch(
+  //     setFollowersCountAction({
+  //       userId: id,
+  //       followersCount: updatedFollowersCoutn,
+  //     })
+  //   );
+
+  //   dispatch(
+  //     setToggleFollowingAction({ userId: id, isFollowing: !isFollowing })
+  //   );
+  // };
 
   return (
     <Card>
       <Logo src={logo} alt="Logo" />
 
-      <Avatar
-        src={avatar || avatarImg}
-        alt="User avatar"
-        
-      />
+      <Avatar src={avatar || avatarImg} alt="User avatar" />
 
       <Description>
-        <Text>{tweets} TWEETS</Text>
-        <Text>{followersCount.toLocaleString("en-US")} FOLLOWERS</Text>
+        <Text className="mrBtn16">{tweets} TWEETS</Text>
+        <Text className="mrBtn26">
+          {followers.toLocaleString("en-US")} FOLLOWERS
+        </Text>
 
-        <Button onClick={handleOnFollow}>
+        <Button onClick={()=>{setFollowers(isFollowing ? followers-1: followers+1); toggleUserIsFollowing(id)}} isFollowing={isFollowing}>
           {isFollowing ? "Following" : "Follow"}
         </Button>
       </Description>
@@ -73,7 +69,9 @@ UserCardItem.propTypes = {
     tweets: PropTypes.number.isRequired,
     followers: PropTypes.number.isRequired,
     id: PropTypes.string.isRequired,
+    isFollowing: PropTypes.bool
   }).isRequired,
+  toggleUserIsFollowing: PropTypes.func.isRequired
 };
 
 export default UserCardItem;
