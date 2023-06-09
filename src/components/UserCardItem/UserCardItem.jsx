@@ -12,37 +12,12 @@ import avatarImg from "../../images/Hansel.png";
 
 import { useState } from "react";
 
-const UserCardItem = ({ user, toggleUserIsFollowing }) => {
+export const UserCardItem = ({ user, toggleUserIsFollowing }) => {
   
   const { avatar, tweets, isFollowing, id } = user;
 
   const [followers, setFollowers] =useState(isFollowing? parseInt(user.followers)+1 : parseInt(user.followers)) 
-
-  // const followingStatus = useSelector(selectFollowingStatud);
-
-  // const isFollowing = followingStatus[id] ?? false;
-
-  // const followersCount = useSelector(
-  //   (state) => state.users.followersCount[id] ?? followers
-  // );
-
-  // const handleOnFollow = () => {
-  //   const updatedFollowersCoutn = isFollowing
-  //     ? followersCount - 1
-  //     : followersCount + 1;
-
-  //   dispatch(
-  //     setFollowersCountAction({
-  //       userId: id,
-  //       followersCount: updatedFollowersCoutn,
-  //     })
-  //   );
-
-  //   dispatch(
-  //     setToggleFollowingAction({ userId: id, isFollowing: !isFollowing })
-  //   );
-  // };
-
+  
   return (
     <Card>
       <Logo src={logo} alt="Logo" />
@@ -74,4 +49,4 @@ UserCardItem.propTypes = {
   toggleUserIsFollowing: PropTypes.func.isRequired
 };
 
-export default UserCardItem;
+// export default UserCardItem;

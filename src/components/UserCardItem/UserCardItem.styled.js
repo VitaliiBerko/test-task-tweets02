@@ -3,7 +3,7 @@ import picture from '../../images/picture@1.png';
 import elips from '../../images/Ellipse1.png'
 import rectangle from '../../images/Rectangle.png'
 
-export const Card = styled.li`
+export const Card = styled.div`
   position: relative;
   background-image: url(${picture}),
     url(${elips}), url(${rectangle}),
