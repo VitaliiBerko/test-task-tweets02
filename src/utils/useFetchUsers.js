@@ -67,5 +67,5 @@ export const useFetchUsers = () => {
 
   writeUsersToLs(users);
 
-  return { users, setUsers, isMoreUsers, status, page, setPage };
+  return  {users, setUsers, isMoreUsers, status, page, setPage};
 };
