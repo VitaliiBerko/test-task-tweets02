@@ -1,4 +1,4 @@
-import {UserCardItem} from "../../components/UserCardItem/UserCardItem";
+import { UserCardItem } from "../../components/UserCardItem/UserCardItem";
 
 import { useEffect, useState } from "react";
 
@@ -9,13 +9,13 @@ import { ButtonLoadMore } from "../../components/Buttons/ButtonLoadMore";
 import { Filter } from "../../components/Filter/Filter";
 import { FILTER } from "../../constans/filter.constans";
 import { Btn, UserCards, Wrapper } from "./Tweets.styled";
-import { useFetchUsers } from "../../utils/useFetchusers";
+import  {useFetchUsers}  from "../../utils/useFetchusers";
 import { writeUsersToLs } from "../../utils/writeUsersToLs";
 
-function Tweets  ()  {
+export default function Tweets() {
   const { users, setUsers, isMoreUsers, status, page, setPage } =
     useFetchUsers();
-  // const isLoading = status===STATUS.loading;
+
   const [filteredUsers, setFilteredUsers] = useState(users);
   const [selectedSortOption, setSelectedSortOption] = useState(FILTER.showAll);
   const navigate = useNavigate();
@@ -31,10 +31,7 @@ function Tweets  ()  {
     }
 
     setFilteredUsers(users);
-
-  }, [users, 
-    selectedSortOption
-  ]);
+  }, [users, selectedSortOption]);
 
   const toggleUserIsFollowing = (id) => {
     const updatedUsers = users.map((user) => {
@@ -48,7 +45,6 @@ function Tweets  ()  {
     setUsers(updatedUsers);
   };
 
-  
   const onBack = () => {
     navigate(-1);
   };
@@ -70,7 +66,6 @@ function Tweets  ()  {
               return (
                 <li key={user.id}>
                   <UserCardItem
-                    // key={user.id}
                     user={user}
                     toggleUserIsFollowing={toggleUserIsFollowing}
                   />
@@ -96,4 +91,4 @@ function Tweets  ()  {
   );
 }
 
-export default Tweets
+

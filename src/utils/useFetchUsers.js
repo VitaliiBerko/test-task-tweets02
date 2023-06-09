@@ -26,11 +26,11 @@ export const useFetchUsers = () => {
   const [users, setUsers] = useState(usersInLs);
 
   useEffect(() => {
-    const fetchData = async (page=1) => {
+    const fetchData = async (page = 1) => {
       const params = {
         page,
         limit: LIMIT_PER_PAGE,
-      }
+      };
       try {
         setStatus(STATUS.loading);
 
@@ -45,22 +45,16 @@ export const useFetchUsers = () => {
         if (data.length < params.limit) {
           setIsMoreUsers(false);
         }
-        
 
         setUsers((prev) => [...prev, ...data]);
 
         setStatus(STATUS.success);
 
-        autoScrollBottom()
-
-               
-
+        autoScrollBottom();
       } catch (error) {
         console.log(error);
         setStatus(STATUS.error);
       }
-
-
     };
 
     if (firstRun.current) {
@@ -69,11 +63,9 @@ export const useFetchUsers = () => {
     }
 
     fetchData(page);
-  },
-  [page]);
+  }, [page]);
 
   writeUsersToLs(users);
-
 
   return { users, setUsers, isMoreUsers, status, page, setPage };
 };
