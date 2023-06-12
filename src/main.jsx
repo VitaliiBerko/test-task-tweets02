@@ -9,5 +9,5 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <BrowserRouter basename="/test-task-tweets02">
       <App />
     </BrowserRouter>
-   </React.StrictMode>
+    </React.StrictMode>
 );

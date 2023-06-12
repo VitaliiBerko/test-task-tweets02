@@ -9,7 +9,7 @@ import { ButtonLoadMore } from "../../components/Buttons/ButtonLoadMore";
 import { Filter } from "../../components/Filter/Filter";
 import { FILTER } from "../../constans/filter.constans";
 import { Btn, UserCards, Wrapper } from "./Tweets.styled";
-import  {useFetchUsers}  from "../../utils/useFetchusers";
+import  {useFetchUsers}  from "../../utils/useFetchUsers";
 import { writeUsersToLs } from "../../utils/writeUsersToLs";
 
 export default function Tweets() {
