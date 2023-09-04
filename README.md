@@ -11,7 +11,7 @@ Preparation
     To start, execute the command npm run dev
     Go to the address in the browser http://localhost:5173/test-task-tweets02
 
-To create the front-end part of the Web application, the following we used:
+To create the front-end part of the Web application, the following I used:
 
     Vite
     Redux Toolkit
